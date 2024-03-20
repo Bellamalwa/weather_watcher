@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Weather Watcher</title>
+</head>
+<body>
+    <div id="loading-container" class="loading-container">
+	    <img src="images/loading.gif" alt="Loading...">
+    </div>
+    <div class="container">
+        <input type="text" id="locationInput" placeholder="Enter location">
+        <button id="get-weather-button">Get Weather</button>
+        <button id="get-current-location-button">Get Current Location Weather</button>
+        <div id="weatherInfo">
+            <div id="temperature"></div>
+            <div id="condition"></div>
+            <div id="time"></div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { showLoading, hideLoading, displayWeather } from './app.mjs';
+        import { getCityName } from './geolocation.mjs';
+        import { fetchWeather, fetchWeatherByCoords, fetchWeatherData, updateWeatherInfo } from './weather.mjs';
+
+        // Your existing code
+    </script>
+    <script type="module" src="app.mjs" defer></script>
+    <script type="module" src="weather.mjs" defer></script>
+    <script type="module" src="geolocation.mjs" defer></script>
+    <script type="module">
+        import { getWeather, getCurrentLocation } from './weather.mjs';
+
+        // Event listener for a button click (only if running in the browser)
+        document.getElementById('get-weather-button').addEventListener('click', function () {
+            const location = document.getElementById('locationInput').value;
+            getWeather(location);
+        });
+
+        // Event listener for a button click (only if running in the browser)
+        document.getElementById('get-current-location-button').addEventListener('click', function () {
+            getCurrentLocation();
+        });
+    </script>
+</body>
+</html>
